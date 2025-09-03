@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatizá tu negocio con Ninapochona | Agentes personalizados</title>
+    <meta name="description" content="Desde asistentes para CEOs hasta gestores de e-commerce. Ninapochona crea agentes con n8n para automatizar procesos y escalar tu negocio.">
+    <meta name="keywords" content="agentes automatizados, n8n, scraping, eficiencia, SEO, automatización para emprendedores latinos, automatización de procesos repetitivos">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #00cc66;
+            --primary-blue: #3366cc;
+            --secondary-green: #00aa55;
+            --secondary-blue: #2a56b7;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(51,102,204,0.1) 0%, rgba(0,204,102,0.1) 100%);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-blue);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .robot-avatar {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .workflow-animation {
+            position: relative;
+            height: 300px;
+        }
+        
+        .node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .connector {
+            position: absolute;
+            height: 4px;
+            background: var(--primary-green);
+            transform-origin: left center;
+            animation: extend 3s infinite;
+        }
+        
+        @keyframes extend {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+
+
+        /* Ajustes de responsividad adicionales */
+@media (max-width: 1024px) {
+    .workflow-animation {
+        height: 250px;
+    }
+    .node {
+        width: 60px;
+        height: 60px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-gradient {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .robot-avatar {
+        width: 200px;
+        height: 200px;
+    }
+    .workflow-animation {
+        height: 200px;
+    }
+    .node {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7rem;
+    }
+    .connector {
+        height: 3px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-gradient {
+        text-align: center;
+    }
+    .robot-avatar {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .workflow-animation {
+        height: 150px;
+        margin-bottom: 40px;
+    }
+    .node {
+        width: 40px;
+        height: 40px;
+        font-size: 0.6rem;
+    }
+    .service-card, .testimonial-card {
+        margin: 0 10px;
+    }
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.75rem;
+    }
+    .robot-avatar {
+        width: 150px;
+        height: 150px;
+    }
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5493491507341" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://via.placeholder.com/50x50" alt="Ninapochona Logo" class="h-12 w-12 mr-2">
+                    <span class="text-xl font-bold text-gray-800">Ninapochona</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-800 hover:text-green-600 transition">Inicio</a>
+                    <a href="#servicios" class="text-gray-800 hover:text-green-600 transition">Servicios</a>
+                    <a href="#funcionamiento" class="text-gray-800 hover:text-green-600 transition">¿Cómo Funciona?</a>
+                    <a href="#casos" class="text-gray-800 hover:text-green-600 transition">Casos de Éxito</a>
+                    <a href="#recursos" class="text-gray-800 hover:text-green-600 transition">Recursos</a>
+                    <a href="#contacto" class="btn-primary px-4 py-2 rounded-full">Contacto</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Automatización con alma para tu negocio</h1>
+                    <p class="text-xl text-gray-600 mb-8">Agentes automatizados con n8n diseñados para vos</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contacto" class="btn-primary px-6 py-3 rounded-full text-center">Solicitá tu agente personalizado</a>
+                        <a href="#servicios" class="btn-secondary px-6 py-3 rounded-full text-center">Ver servicios</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x400" alt="Robot Ninapochona" class="robot-avatar w-64 h-64">
+                        <div class="absolute -bottom-10 -right-10 bg-blue-100 rounded-full w-32 h-32 flex items-center justify-center">
+                            <span class="text-blue-600 font-bold text-sm text-center">"Automatización de procesos mediante agentes con AI"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Workflow Animation -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="workflow-animation">
+                <div class="node bg-green-500" style="top: 50px; left: 50px;">Trigger</div>
+                <div class="connector" style="top: 90px; left: 130px; width: 100px;"></div>
+                <div class="node bg-blue-500" style="top: 50px; left: 230px;">API</div>
+                <div class="connector" style="top: 90px; left: 310px; width: 100px;"></div>
+                <div class="node bg-green-500" style="top: 50px; left: 410px;">Proceso</div>
+                <div class="connector" style="top: 90px; left: 490px; width: 100px;"></div>
+                <div class="node bg-blue-500" style="top: 50px; left: 590px;">Salida</div>
+                
+                <div class="absolute bottom-0 left-0 right-0 text-center">
+                    <p class="text-lg text-gray-600">Flujo de trabajo modular y personalizable para cada necesidad de tu negocio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="servicios" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Nuestros Agentes Automatizados</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluciones diseñadas para optimizar tus procesos y liberar tu tiempo</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-calendar-check text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Agente Appointment Setter</h3>
+                        <p class="text-gray-600 mb-4">Automatiza la gestión de citas desde Instagram, WhatsApp y otros canales, respondiendo a tus clientes 24/7 con tu voz y estilo.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-blue-800"><strong>Caso de uso:</strong> Restaurante que perdió reservas por no responder mensajes nocturnos.</p>
+                        </div>
+                        <a href="#contacto" class="btn-secondary block text-center px-4 py-2 rounded-full">Quiero este agente</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-user-tie text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Asistente Personal para CEOs</h3>
+                        <p class="text-gray-600 mb-4">Gestiona tu agenda, prioriza correos y organiza reuniones automáticamente, manteniendo tu estilo de comunicación.</p>
+                        <div class="bg-green-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-green-800"><strong>Caso de uso:</strong> Emprendedor que recuperó 10 horas semanales para enfocarse en crecimiento.</p>
+                        </div>
+                        <a href="#contacto" class="btn-primary block text-center px-4 py-2 rounded-full">Quiero este agente</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-blog text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Creador de Blog SEO Expert</h3>
+                        <p class="text-gray-600 mb-4">Genera contenido optimizado para SEO basado en tus keywords, manteniendo la voz de tu marca y actualizando regularmente.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-blue-800"><strong>Caso de uso:</strong> Tienda online que aumentó tráfico orgánico en 300% en 3 meses.</p>
+                        </div>
+                        <a href="#contacto" class="btn-secondary block text-center px-4 py-2 rounded-full">Quiero este agente</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Extractor KPIs de Meta Ads</h3>
+                        <p class="text-gray-600 mb-4">Consolida métricas clave de tus campañas en informes automáticos con análisis inteligente para toma de decisiones.</p>
+                        <div class="bg-green-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-green-800"><strong>Caso de uso:</strong> Agencia que redujo tiempo de reporting de 8h a 15min semanales.</p>
+                        </div>
+                        <a href="#contacto" class="btn-primary block text-center px-4 py-2 rounded-full">Quiero este agente</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-calendar-alt text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">MCP Server para Google Calendar y Shopify</h3>
+                        <p class="text-gray-600 mb-4">Sincroniza automáticamente pedidos de Shopify con tu agenda, evitando conflictos y optimizando tu tiempo.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-blue-800"><strong>Caso de uso:</strong> Negocio que eliminó el 100% de los errores de programación de entregas.</p>
+                        </div>
+                        <a href="#contacto" class="btn-secondary block text-center px-4 py-2 rounded-full">Quiero este agente</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Agente Personalizado</h3>
+                        <p class="text-gray-600 mb-4">¿Necesitas algo específico? Creamos un agente a medida para resolver tu desafío único de automatización.</p>
+                        <div class="bg-green-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-green-800"><strong>Caso de uso:</strong> Tu problema + nuestra solución = tiempo y dinero ahorrado.</p>
+                        </div>
+                        <a href="#contacto" class="btn-primary block text-center px-4 py-2 rounded-full">Hablemos de tu proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section id="funcionamiento" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">¿Cómo Funciona Ninapochona?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tecnología avanzada con un toque humano para que solo te enfoques en lo importante</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="feature-icon bg-green-100 text-green-600">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">1. Diagnóstico</h3>
+                    <p class="text-gray-600">Analizamos tus procesos repetitivos y desafíos operativos para identificar oportunidades de automatización.</p>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon bg-blue-100 text-blue-600">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">2. Desarrollo</h3>
+                    <p class="text-gray-600">Creamos tu agente personalizado con n8n, integrando tus herramientas actuales y manteniendo tu voz.</p>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon bg-green-100 text-green-600">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">3. Implementación</h3>
+                    <p class="text-gray-600">Desplegamos el agente en tu infraestructura con capacitación y soporte continuo para garantizar éxito.</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Tecnología Confiable y Flexible</h3>
+                        <p class="text-gray-600 mb-4">Nuestros agentes se construyen sobre n8n, una plataforma de automatización de código abierto que permite:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Integración con +300 aplicaciones (WhatsApp, Instagram, Shopify, etc.)</li>
+                            <li>Escalabilidad según crecimiento de tu negocio</li>
+                            <li>Privacidad de datos (puede ejecutarse en tus servidores)</li>
+                            <li>Personalización ilimitada para necesidades específicas</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://via.placeholder.com/500x300" alt="Tecnología n8n" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="casos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Casos de Éxito</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Empresas latinoamericanas que ya automatizaron con Ninapochona</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://via.placeholder.com/50x50" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">María Gómez</h4>
+                            <p class="text-sm text-gray-600">Dueña, Boutique Online (Argentina)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"El Agente Appointment Setter resolvió nuestro problema de responder mensajes a deshoras. Ahora no perdemos ninguna consulta y las ventas aumentaron un 25%."</p>
+                    <div class="bg-green-50 px-3 py-1 rounded-full inline-block">
+                        <p class="text-sm text-green-600">Agente utilizado: Appointment Setter</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://via.placeholder.com/50x50" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Carlos Ríos</h4>
+                            <p class="text-sm text-gray-600">CEO, Agencia Marketing (Uruguay)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"El extractor de KPIs nos ahorra 15 horas semanales en reporting. Ahora el equipo puede enfocarse en optimizar campañas en lugar de preparar informes."</p>
+                    <div class="bg-blue-50 px-3 py-1 rounded-full inline-block">
+                        <p class="text-sm text-blue-600">Agente utilizado: Extractor KPIs Meta Ads</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://via.placeholder.com/50x50" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Laura Fernández</h4>
+                            <p class="text-sm text-gray-600">Fundadora, Consultora SEO (Chile)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"El creador de blog SEO mantiene nuestro sitio actualizado con contenido relevante. Nuestro tráfico orgánico creció un 180% en 4 meses."</p>
+                    <div class="bg-green-50 px-3 py-1 rounded-full inline-block">
+                        <p class="text-sm text-green-600">Agente utilizado: Creador Blog SEO</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contacto" class="btn-primary inline-block px-6 py-3 rounded-full">Quiero resultados similares</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resources Section -->
+    <section id="recursos" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Recursos y Comunidad</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Aprende sobre automatización y eficiencia operativa</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Resource 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="blog/img.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Guía: Automatización para PYMES</h3>
+                        <p class="text-gray-600 mb-4">Los 5 procesos que toda pequeña empresa debería automatizar primero.</p>
+                        <a href="blog/automatizapyme.html" class="text-blue-600 font-medium hover:text-blue-800 transition">Leer más →</a>
+                    </div>
+                </div>
+                
+                <!-- Resource 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/400x200" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Webinar: n8n para No-Técnicos</h3>
+                        <p class="text-gray-600 mb-4">Aprende a crear tus primeros flujos de automatización sin saber programar.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition">Ver grabación →</a>
+                    </div>
+                </div>
+                
+                <!-- Resource 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/400x200" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Checklist: Evalúa tu Negocio</h3>
+                        <p class="text-gray-600 mb-4">Descubre qué procesos de tu empresa son candidatos ideales para automatizar.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-blue-800 transition">Descargar PDF →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="btn-secondary inline-block px-6 py-3 rounded-full">Ver todos los recursos</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">¿Listo para Automatizar?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hablemos de cómo Ninapochona puede transformar tu negocio</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-600 p-8 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-white mb-4">Contáctanos</h3>
+                        <p class="text-blue-100 mb-6">Ya sea que tengas una pregunta específica o quieras explorar posibilidades, estamos aquí para ayudarte.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-white mr-4"></i>
+                                <a href="tel:+5493491507341" class="text-white hover:text-blue-200 transition">+54 9 3491 507341</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-white mr-4"></i>
+                                <a href="mailto:contacto@ninapochona.com" class="text-white hover:text-blue-200 transition">contacto@ninapochona.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram text-white mr-4"></i>
+                                <a href="https://instagram.com/ninapochona" target="_blank" class="text-white hover:text-blue-200 transition">@ninapochona</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8">
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Nombre</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label for="business" class="block text-gray-700 mb-2">Tipo de Negocio</label>
+                                <input type="text" id="business" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">¿Qué proceso te gustaría automatizar?</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3 rounded-lg">Enviar Consulta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="#" alt="Ninapochona Logo" class="h-10 w-10 mr-2">
+                        <span class="text-xl font-bold">Ninapochona</span>
+                    </div>
+                    <p class="text-gray-400">Automatización de procesos mediante agentes con AI para negocios latinoamericanos.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#servicios" class="text-gray-400 hover:text-white transition">Agentes Automatizados</a></li>
+                        <li><a href="#funcionamiento" class="text-gray-400 hover:text-white transition">¿Cómo Funciona?</a></li>
+                        <li><a href="#casos" class="text-gray-400 hover:text-white transition">Casos de Éxito</a></li>
+                        <li><a href="#contacto" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Guías</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Webinars</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Ninapochona. Todos los derechos reservados.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const business = document.getElementById('business').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to your server
+            console.log('Form submitted:', {name, email, business, message});
+            
+            // Show success message
+            alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo pronto.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle (would need additional implementation)
+        document.querySelector('.md\\:hidden button').addEventListener('click', function() {
+            alert('Menú móvil se abriría aquí. En una implementación completa, esto mostraría/ocultaría el menú.');
+        });
+        
+        // Animation for workflow nodes
+        const nodes = document.querySelectorAll('.node');
+        const connectors = document.querySelectorAll('.connector');
+        
+        // Animate each node with a delay
+        nodes.forEach((node, index) => {
+            node.style.animationDelay = `${index * 0.5}s`;
+        });
+        
+        // Animate each connector with a delay
+        connectors.forEach((connector, index) => {
+            connector.style.animationDelay = `${index * 0.5 + 0.3}s`;
+        });
+
+
+
+        // Mobile menu functionality
+const mobileMenuButton = document.querySelector('.md\\:hidden button');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8';
+mobileMenu.innerHTML = `
+    <button class="absolute top-4 right-4 text-gray-800">
+        <i class="fas fa-times text-2xl"></i>
+    </button>
+    <a href="#inicio" class="text-2xl font-medium text-gray-800 hover:text-green-600 transition">Inicio</a>
+    <a href="#servicios" class="text-2xl font-medium text-gray-800 hover:text-green-600 transition">Servicios</a>
+    <a href="#funcionamiento" class="text-2xl font-medium text-gray-800 hover:text-green-600 transition">¿Cómo Funciona?</a>
+    <a href="#casos" class="text-2xl font-medium text-gray-800 hover:text-green-600 transition">Casos de Éxito</a>
+    <a href="#recursos" class="text-2xl font-medium text-gray-800 hover:text-green-600 transition">Recursos</a>
+    <a href="#contacto" class="btn-primary px-6 py-3 rounded-full text-xl">Contacto</a>
+`;
+
+mobileMenuButton.addEventListener('click', () => {
+    document.body.appendChild(mobileMenu);
+    mobileMenu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenu.querySelector('button').addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+});
+
+// Close menu when clicking on links
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+});
+
+    </script>
+</body>
+</html>
